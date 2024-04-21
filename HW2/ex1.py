@@ -136,17 +136,18 @@ def show_res(before_img, after_img):
 
 if __name__ == '__main__':
     img_noise = "ex1_images/noise.png" # <- need to specify the path to the noise image
-    #img_gt = "ex1_images/gt.png" # <- need to specify the path to the gt image
+    img_gt = "ex1_images/ori_img.png" # <- need to specify the path to the gt image
     img = read_img(img_noise)
+    img_ori = read_img(img_gt)
     filter_size = 3
 
     # Mean filter
     mean_smoothed_img = mean_filter(img, filter_size)
     show_res(img, mean_smoothed_img)
-    print('PSNR score of mean filter: ', psnr(img, mean_smoothed_img))
+    print('PSNR score of mean filter: ', psnr(img_ori, mean_smoothed_img))
 
     # Median filter
     median_smoothed_img = median_filter(img, filter_size)
     show_res(img, median_smoothed_img)
-    print('PSNR score of median filter: ', psnr(img, median_smoothed_img))
+    print('PSNR score of median filter: ', psnr(img_ori, median_smoothed_img))
 
